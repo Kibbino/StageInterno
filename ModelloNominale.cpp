@@ -5,27 +5,11 @@
 
 using namespace std;
 
-class Matrix {
-private:
-    int T, C;
-    std::vector<GRBVar> v;
 
-public:
-    Matrix(int T, int C) : T(T), C(C) {
-        v.resize(T * C);
-    }
-
-    void set(int t, int c, GRBVar var) {
-        v[t * C + c] = var;
-    }
-
-    GRBVar& at(int t, int c) {
-        return v[t * C + c];
-    }
-};
 
 int main() {
     try {
+        generateDACCSV("path.csv", 10);
         // Crea l'ambiente
         GRBEnv env(true);
         env.set("LogFile", "nominale.log");
@@ -35,18 +19,17 @@ int main() {
         GRBModel model(env);
 
         // Variabili
-        CSVReader reader;
-        DACData data = reader.readCSV("path.csv");
+        DACData data("path.csv");
         int T=data.grid.getNTimeslots();
         int C=data.getNConfigurations();
-        Matrix x(T,C);
+        Matrix<GRBVar> x(T,C);
         for(int t = 0; t < T; t++) {
                 for(int c = 0; c < C; c++) {
                     string name = "x_" + to_string(t) + "_" + to_string(c);
                     x.at(t,c)=model.addVar(0.0, 1.0, 0.0, GRB_BINARY, name);
                 }
             }
-        Matrix s(T,C);
+        Matrix<GRBVar> s(T,C);
         for(int t = 0; t < T; t++) {
                 for(int c = 0; c < C; c++) {
                     string name = "s_" + to_string(t) + "_" + to_string(c);
@@ -91,13 +74,12 @@ int main() {
 
         // Vincolo 5.5
         int h=data.grid.geth();
-        for(int t=0; t<T; t++) {
+        for(int t=0; t<=T-h; t++) {
             GRBLinExpr sum = 0;
-            for(int j=t; j < std::min(t + h, T); j++) {
-                for (int c=0; c<C; c++) {
-                    sum += s.at(j,c);
-                }
-                
+            for(int y=t; y<=t+h-1; y++) {
+                    for (int c=0; c<C; c++) {
+                        sum += s.at(y,c);
+                    }
             }
             model.addConstr(sum<=1);
         }
@@ -111,7 +93,6 @@ int main() {
         }
         
         model.setObjective(sum, GRB_MINIMIZE);
-
         // Ottimizza
         model.optimize();
 
@@ -130,15 +111,33 @@ int main() {
                 }
             }
 
-            cout << "\nSwitch di configurazione:\n";
-            for (int t = 0; t < T; t++) {
-                for (int c = 0; c < C; c++) {
-                    if (s.at(t,c).get(GRB_DoubleAttr_X) > 0.5) {
-                        cout << "t = " << t
-                            << " -> attivata configurazione " << c << '\n';
-                    }
-                }
+            cout << "\nSwitch di configurazione rilevati:\n";
+for (int t = 0; t < T; t++) {
+    for (int c = 0; c < C; c++) {
+        bool switch_rilevato = false;
+        
+        if (t == 0) {
+            // A t=0 c'è uno switch se la configurazione si attiva per la prima volta
+            if (x.at(t, c).get(GRB_DoubleAttr_X) > 0.5) {
+                switch_rilevato = true;
             }
+        } else {
+            // Per t > 0, c'è uno switch se era spenta prima e accesa ora
+            if (x.at(t, c).get(GRB_DoubleAttr_X) > 0.5 && x.at(t-1, c).get(GRB_DoubleAttr_X) < 0.5) {
+                switch_rilevato = true;
+            }
+        }
+
+        if (switch_rilevato) {
+            cout << "t = " << t << " -> Attivata configurazione " << c;
+            // Verifica di controllo (opzionale ma utile per il debugging del modello)
+            if (s.at(t, c).get(GRB_DoubleAttr_X) < 0.5) {
+                cout << " [ATTENZIONE: s_c^t non si è attivata correttamente nel solutore!]";
+            }
+            cout << '\n';
+        }
+    }
+}
         } else {
 
         cout << "Il modello non ha trovato una soluzione ottima.\n";
@@ -149,9 +148,12 @@ int main() {
     } catch (GRBException &e) {
         cout << "Errore Gurobi " << e.getErrorCode()
              << ": " << e.getMessage() << endl;
-    } catch (...) {
-        cout << "Errore sconosciuto." << endl;
-    }
+    } catch (const std::exception& e) {
+    cout << "Eccezione: " << e.what() << endl;
+}
+catch (...) {
+    cout << "Eccezione non identificata." << endl;
+}
     return 0;
 }
 
