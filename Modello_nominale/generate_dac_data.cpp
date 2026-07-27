@@ -7,6 +7,7 @@
 #include <string>
 #include <unordered_map>
 #include <algorithm>
+#include "utils.h"
 
 
 // STRUTTURA: La grid contiene tutti gli airblock, che ne esistono esattamente solo quelli contenuti in quell'unica grid. 
@@ -34,6 +35,13 @@ public:
     P& at(int t, int c) {
         return v[t * C + c];
     }
+
+    int getnrows() {
+        return T;
+    };
+    int getncols() {
+        return C;
+    };
 
     std::vector<P> getLine(int l) {
         std::vector<P> line;
@@ -176,8 +184,8 @@ public:
     Grid(int rows, int cols, const TimeHorizon& time, int h);
     Grid(const std::string& filename);
 
-    int rows() const;
-    int cols() const;
+    int getNRows() const;
+    int getNCols() const;
 
     int index(int row, int col) const;
     std::pair<int,int> coordinates(int id) const;
@@ -197,6 +205,14 @@ private:
 
     int h;  //minimo slot temporale che deve passare tra due configurazioni diverse
 };
+
+int Grid::getNRows() const {
+    return m_rows;
+}
+
+int Grid::getNCols() const {
+    return m_cols;
+}
 
 
 
@@ -319,12 +335,12 @@ std::vector<int> DACData::getSimilarConfigurationsIndex(Configuration& c1) {
 
 }
 
-using namespace std;
+
 
 DACData::DACData(const std::string& filename): grid(readGrid(filename)) {
     readRest(filename);
 }
-string DACData::trim(string s)
+std::string DACData::trim(std::string s)
 {
     while (!s.empty() && isspace(s.front()))
         s.erase(s.begin());
@@ -341,11 +357,11 @@ string DACData::trim(string s)
     return s;
 }
 
-vector<string> DACData::split(const string& s, char sep)
+std::vector<std::string> DACData::split(const std::string& s, char sep)
 {
-    vector<string> out;
-    string token;
-    stringstream ss(s);
+    std::vector<std::string> out;
+    std::string token;
+    std::stringstream ss(s);
     std::vector<std::vector<double>> capacities;
 
     while(getline(ss, token, sep))
@@ -355,22 +371,20 @@ vector<string> DACData::split(const string& s, char sep)
 }
 
 
-void DACData::readRest(const string& filename)  {
-    std::cout<<"ciao";
-    ifstream in(filename);
+void DACData::readRest(const std::string& filename)  {
+    std::ifstream in(filename);
 
     if(!in)
-        throw runtime_error("Cannot open file.");
+        throw std::runtime_error("Cannot open file.");
 
     //--------------------------------------------------
     // Variabili temporanee
     //--------------------------------------------------
 
-    string line;
-    string section;
+    std::string line;
+    std::string section;
 
     Matrix<double>* capPtr=NULL;
-    std::cout<<"dentro reader";
 
     while(getline(in,line))
     {
@@ -413,11 +427,11 @@ void DACData::readRest(const string& filename)  {
 
             int id = stoi(f[0]);
 
-            vector<AirBlock*> blocks;
+            std::vector<AirBlock*> blocks;
 
-            vector<string> airIds = split(f[1], ';');
+            std::vector<std::string> airIds = split(f[1], ';');
 
-            for (string& s : airIds)
+            for (std::string& s : airIds)
             {
                 int blockId = stoi(s);
 
@@ -453,11 +467,11 @@ void DACData::readRest(const string& filename)  {
 
             int id = stoi(f[0]);
 
-            vector<Sector*> configSectors;
+            std::vector<Sector*> configSectors;
 
-            vector<string> secIds = split(f[1], ';');
+            std::vector<std::string> secIds = split(f[1], ';');
 
-            for (string& s : secIds)
+            for (std::string& s : secIds)
             {
                 int sectorId = stoi(s);
 
@@ -466,42 +480,12 @@ void DACData::readRest(const string& filename)  {
                 configSectors.push_back(b);
             }
             configurations.push_back(Configuration(id, configSectors));
-
-
-
-
-
-
-
-
-
-
-
-
-            // auto f = split(line,',');
-
-            // int id = stoi(f[0]);
-
-            // configurations.emplace_back(id);
-
-            // Configuration& c = configurations.back();
-
-            // auto ids = split(f[1],';');
-
-            // for(auto& x : ids)
-            //     c.sectors.push_back(sectorMap[stoi(x)]);
-
-            // configMap[id]=&c;
         }
     }
     for (size_t i = 0; i < sectors.size(); ++i)
         {
         sectors[i].setCapacity(capPtr->getLine(i));
         }
-
-    //--------------------------------------------------
-    // Costruzione DACData
-    //--------------------------------------------------
 }
 
 
@@ -599,21 +583,13 @@ for(int s=0; s<NSECTORS; s++)
 
     
 
-        //-----------------------------
+    //-----------------------------
     // TRAFFIC
     //-----------------------------
     out << "[TRAFFIC]\n";
     out << "airblock,time,traffic\n";
 
-    auto hourlyFactor = [](int t)
-    {
-        // Picchi di traffico
-        if (t == 0)  return 1.8;   // 6-7
-        if (t == 6)  return 2.0;   // 12-13
-        if (t == 13) return 1.7;   // 19-20
-
-        return 0.7 + 0.4 * std::sin(3.14159265 * t / 15.0);
-    };
+    
 
     for(int k = 0; k < ROWS * COLS; k++)
     {
@@ -673,14 +649,9 @@ for(int s=0; s<NSECTORS; s++)
     }
 
     out << "\n";
-
-    //-----------------------------
-    // COMPATIBILITY
-    //-----------------------------
     
 
     out.close();
 
-    std::cout << "Istanza salvata in "
-              << filename << std::endl;
+    std::cout << "Istanza salvata in " << filename << std::endl;
 }

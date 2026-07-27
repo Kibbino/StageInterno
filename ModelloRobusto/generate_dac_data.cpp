@@ -1,0 +1,386 @@
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <random>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+
+#include "generate_dac_data.h"
+#include "Matrix.h"
+
+
+// STRUTTURA: La grid contiene tutti gli airblock, che ne esistono esattamente solo quelli contenuti in quell'unica grid. 
+// I settori conterranno dei puntatori a quegli airblock. Per settare agli airblock il traffico, sarà il costruttore della 
+// grid a farlo, o una sua funzione apposita
+// prima: creo la griglia, che crea gli airblock
+// poi: creo il vettore traffico e lo do alla funzione griglia che setta il traffico agli airblock
+// poi: creo i settori che puntano all'id dell'airblock segnato nel csv
+// poi: creo le configurazioni, che puntano agli id dei settori indicati nel csv, e controlla che l'unione dei settori formi la griglia
+
+void AirBlock::setglevel(int t, int g) {
+    gLevel[t]=g;
+}
+
+
+void AirBlock::setplevel(int t, int p) {
+    pLevel[t]=p;
+}
+
+int AirBlock::getIndex() {
+    return index;
+}
+
+int AirBlock::getplevel(int t) {
+    return pLevel[t];
+}
+
+int AirBlock::getglevel(int t) {
+    return gLevel[t];
+}
+
+void AirBlock::setTraffic(int time, double t){
+    traffic[time]=t;
+}
+double AirBlock::getTraffic(int t) {
+    return traffic[t];
+}
+
+// SECTOR
+
+double Sector::getTraffic(int t) {
+    double sum=0.0;
+    for(int a=0; a<airblocks.size(); a++) {
+        sum += airblocks[a]->getTraffic(t);
+    }
+    return sum;
+}
+
+double Sector::getCapacity(int t) {
+    return capacity[t];
+}
+
+int Sector::getNAirblocks() {
+    return airblocks.size();
+}
+
+void Sector::setCapacity(std::vector<double> cap) {
+    capacity=cap;
+}
+
+int Sector::getExcess(int t) {
+    double total=0.0;
+    for(int a=0; a<airblocks.size(); a++) {
+        total += airblocks[a]->getTraffic(t);
+    }
+    return std::max(0.0, total - capacity[t]);
+}
+
+int Sector::getIndex() {
+    return index;
+}
+
+//  CONFIGURATION
+
+int Configuration::getExcess(int t) {
+    double total=0.0;
+    for(int s=0; s<sectors.size(); s++) {
+        total+=sectors[s]->getExcess(t);
+    }
+    return total;
+}
+
+bool Configuration::checkSimilarity(Configuration& c2) {
+    int intersection=0;
+    for(int s1=0; s1<sectors.size(); s1++) {
+        for(int s2=0; s2<c2.sectors.size(); s2++) {
+            if(sectors[s1]->getIndex()==c2.sectors[s2]->getIndex()) {
+                intersection++;
+            }
+        }
+    }
+    int setUnion = sectors.size() + c2.sectors.size() - intersection;
+    if(setUnion>0) {
+        double result=static_cast<double>(intersection)/setUnion;
+        if(result>=0.50) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+    
+}
+
+// GRID
+
+int Grid::getNRows() const {
+    return m_rows;
+}
+
+int Grid::getNCols() const {
+    return m_cols;
+}
+
+AirBlock& Grid::airBlock(int id)
+{
+    return m_airBlocks[id];
+}
+
+AirBlock& Grid::airBlock(int row, int col)
+{
+    return m_airBlocks[row * m_cols + col];
+}
+
+int Grid::getNTimeslots()
+{
+    return m_time.size();
+}
+
+int Grid::geth()
+{
+    return h;
+}
+
+Grid::Grid(int rows, int cols, const TimeHorizon& time, int h)
+    : m_rows(rows), m_cols(cols), m_time(time), h(h)
+{
+    int id = 0;
+
+    for (int r = 0; r < rows; ++r)
+        for (int c = 0; c < cols; ++c)
+            m_airBlocks.emplace_back(id++, r, c, time.size()); //penso che l'id non serva negli airblock
+}
+
+
+
+Grid DACData::readGrid(const std::string& filename)
+{
+    std::ifstream in(filename);
+
+    if (!in)
+        throw std::runtime_error("Cannot open file.");
+
+    std::string line;
+    std::string section;
+
+    TimeHorizon time(0,0);
+    time.slots.clear();
+
+    int rows = 0;
+    int cols = 0;
+    int h = 0;
+
+    while (std::getline(in, line))
+    {
+        line = trim(line);
+
+        if (line.empty())
+            continue;
+
+        if (line[0] == '[')
+        {
+            section = line;
+            std::getline(in, line);   // salta intestazione
+            continue;
+        }
+
+        if (section == "[TIME]")
+        {
+            auto f = split(line, ',');
+
+            int id    = std::stoi(f[0]);
+            int start = std::stoi(f[1]);
+            int end   = std::stoi(f[2]);
+
+            time.slots.emplace_back(id, start, end);
+        }
+        else if (section == "[GRID]")
+        {
+            auto f = split(line, ',');
+
+            rows = std::stoi(f[0]);
+            cols = std::stoi(f[1]);
+            h    = std::stoi(f[2]);
+        }
+    }
+
+    return Grid(rows, cols, time, h);
+}
+
+int DACData::getNConfigurations() {
+    return configurations.size();
+}
+
+std::vector<int> DACData::getSimilarConfigurationsIndex(Configuration& c1) {
+    // algoritmo: rapporto tra settori in comune e insieme dei settori della configurazione c e c'
+    std::vector<int> similarIndex;
+    for(int c2=0; c2<configurations.size(); c2++) {
+        if(c1.checkSimilarity(configurations[c2])) {
+            similarIndex.push_back(c2);
+        }
+    }
+    return similarIndex;
+
+}
+
+
+
+DACData::DACData(const std::string& filename): grid(readGrid(filename)), epsilon(1e-4) {
+    readRest(filename);
+}
+std::string DACData::trim(std::string s)
+{
+    while (!s.empty() && isspace(s.front()))
+        s.erase(s.begin());
+
+    while (!s.empty() && isspace(s.back()))
+        s.pop_back();
+
+    if (!s.empty() && s.front() == '"')
+        s.erase(s.begin());
+
+    if (!s.empty() && s.back() == '"')
+        s.pop_back();
+
+    return s;
+}
+
+std::vector<std::string> DACData::split(const std::string& s, char sep)
+{
+    std::vector<std::string> out;
+    std::string token;
+    std::stringstream ss(s);
+    std::vector<std::vector<double>> capacities;
+
+    while(getline(ss, token, sep))
+        out.push_back(trim(token));
+
+    return out;
+}
+
+
+void DACData::readRest(const std::string& filename)  {
+    std::ifstream in(filename);
+
+    if(!in)
+        throw std::runtime_error("Cannot open file.");
+
+    //--------------------------------------------------
+    // Variabili temporanee
+    //--------------------------------------------------
+
+    std::string line;
+    std::string section;
+
+    Matrix<double>* capPtr=NULL;
+
+    while(getline(in,line))
+    {
+        line = trim(line);
+
+        if(line.empty())
+            continue;
+
+        if(line[0]=='[')
+        {
+            section = line;
+            getline(in,line);     // salta intestazione
+            continue;
+        }        
+
+        //--------------------------------------------------
+        // AIRBLOCK DATA
+        //--------------------------------------------------
+
+        else if(section=="[AIRBLOCKS]")
+        {
+            auto f = split(line, ',');
+
+            int block = stoi(f[0]);
+            int t     = stoi(f[1]);
+            double tr = stod(f[2]);
+            int p     = stoi(f[3]);
+            int g     = stoi(f[4]);
+
+            AirBlock& b = grid.airBlock(block);
+
+            b.setTraffic(t, tr);
+            b.setplevel(t, p);
+            b.setglevel(t, g);
+        }
+
+        //--------------------------------------------------
+        // SECTORS
+        //--------------------------------------------------
+
+        else if(section=="[SECTORS]")
+        {
+            auto f = split(line, ',');
+
+            int id = stoi(f[0]);
+
+            std::vector<AirBlock*> blocks;
+
+            std::vector<std::string> airIds = split(f[1], ';');
+
+            for (std::string& s : airIds)
+            {
+                int blockId = stoi(s);
+
+                AirBlock* b = &grid.airBlock(blockId);
+
+                blocks.push_back(b);
+            }
+            
+            sectors.push_back(Sector(id, blocks));
+        }
+
+
+        else if(section=="[CAPACITY]")
+        {
+        auto f = split(line, ',');
+
+        int sectorId = stoi(f[0]);
+        int t = stoi(f[1]);
+        double cap = stod(f[2]);
+        if(capPtr==NULL) {
+            capPtr=new Matrix<double>(sectors.size(), grid.getNTimeslots());
+        }
+        capPtr->set(sectorId, t, cap);
+        }
+
+        //--------------------------------------------------
+        // CONFIGURATIONS
+        //--------------------------------------------------
+
+        else if(section=="[CONFIGURATIONS]")
+        {
+            auto f = split(line, ',');
+
+            int id = stoi(f[0]);
+
+            std::vector<Sector*> configSectors;
+
+            std::vector<std::string> secIds = split(f[1], ';');
+
+            for (std::string& s : secIds)
+            {
+                int sectorId = stoi(s);
+
+                Sector* b = &(sectors[sectorId]);
+
+                configSectors.push_back(b);
+            }
+            configurations.push_back(Configuration(id, configSectors));
+        }
+    }
+    for (size_t i = 0; i < sectors.size(); ++i)
+        {
+        sectors[i].setCapacity(capPtr->getLine(i));
+        }
+}
+

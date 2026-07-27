@@ -1,0 +1,192 @@
+#pragma once
+#include <iostream> //da controllare se servono tutti
+#include <vector>
+#include <fstream>
+#include <random>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+
+
+auto hourlyFactor(int t)
+    {
+        // Picchi di traffico
+        if (t == 0)  return 1.8;   // 6-7
+        if (t == 6)  return 2.0;   // 12-13
+        if (t == 13) return 1.7;   // 19-20
+
+        return 0.7 + 0.4 * std::sin(3.14159265 * t / 15.0);
+    };
+
+void generateDACCSV(const std::string& filename, unsigned int seed)
+{
+    std::mt19937 rng(seed);
+
+    constexpr int ROWS = 20;
+    constexpr int COLS = 20;
+    constexpr int NTIMES = 15;
+
+    constexpr int NSECTORS = 100;
+    constexpr int NCONFIGS = 20;
+
+    std::uniform_int_distribution<int> blockDist(0, ROWS*COLS-1);
+    std::uniform_int_distribution<int> sectorSizeDist(8,30);
+    std::uniform_real_distribution<double> capacityDist(20.0,50.0);
+    std::normal_distribution<double> capacityNoise(1.0,0.05);
+    std::normal_distribution<double> noise(1.0, 0.15);
+
+    std::ofstream out(filename);
+
+    //-----------------------------
+    // TIME
+    //-----------------------------
+    out << "[TIME]\n";
+    out << "id,start,end\n";
+
+    for(int t=0;t<NTIMES;t++)
+        out << t << "," << 6+t << "," << 7+t << "\n";
+
+    out << "\n";
+
+    //-----------------------------
+    // GRID
+    //-----------------------------
+    out << "[GRID]\n";
+    out << "rows,cols,h\n";
+    out << ROWS << "," << COLS << "," << 2 << "\n\n";
+
+    //-----------------------------
+    // SECTORS
+    //-----------------------------
+    out << "[SECTORS]\n";
+    out << "id,airblocks\n";
+
+    std::vector<std::vector<int>> sectorBlocks;
+
+    for(int s=0;s<NSECTORS;s++)
+    {
+        int size = sectorSizeDist(rng);
+
+        std::set<int> blocks;
+
+        while(blocks.size()<size)
+            blocks.insert(blockDist(rng));
+
+        sectorBlocks.emplace_back(blocks.begin(),blocks.end());
+
+        out << s << ",\"";
+
+        for(size_t i=0;i<sectorBlocks.back().size();i++)
+        {
+            out << sectorBlocks.back()[i];
+
+            if(i+1<sectorBlocks.back().size())
+                out << ";";
+        }
+
+        out << "\"\n";
+    }
+
+    out << "\n";
+
+    out << "\n";
+
+out << "[CAPACITY]\n";
+out << "sector,time,capacity\n";
+
+for(int s=0; s<NSECTORS; s++)
+{
+    double baseCapacity = capacityDist(rng);
+
+    for(int t=0; t<NTIMES; t++)
+    {
+        double cap = baseCapacity * std::max(0.8, capacityNoise(rng));
+
+        out << s << ","
+            << t << ","
+            << cap
+            << "\n";
+    }
+}
+
+    
+
+    //-----------------------------
+// AIRBLOCK DATA
+//-----------------------------
+out << "[AIRBLOCKS]\n";
+out << "airblock,time,traffic,p_level,g_level\n";
+
+std::uniform_int_distribution<int> pLevelDist(1,3);
+std::uniform_int_distribution<int> gLevelDist(1,3);
+
+for(int k = 0; k < ROWS * COLS; k++)
+{
+    std::uniform_real_distribution<double> baseTraffic(2.0, 8.0);
+    double base = baseTraffic(rng);
+
+    for(int t = 0; t < NTIMES; t++)
+    {
+        double traffic =
+            base *
+            hourlyFactor(t) *
+            std::max(0.2, noise(rng));
+
+        int pLevel = pLevelDist(rng);
+        int gLevel = gLevelDist(rng);
+
+        out << k << ","
+            << t << ","
+            << traffic << ","
+            << pLevel << ","
+            << gLevel << "\n";
+    }
+}
+
+out << "\n";
+
+    //-----------------------------
+    // CONFIGURATIONS
+    //-----------------------------
+    out << "[CONFIGURATIONS]\n";
+    out << "id,sectors\n";
+
+    std::uniform_int_distribution<int> nSectorConfDist(5,12);
+    std::uniform_int_distribution<int> sectorIdDist(0,NSECTORS-1);
+
+    std::vector<std::set<int>> configs;
+
+    for(int c=0;c<NCONFIGS;c++)
+    {
+        int n=nSectorConfDist(rng);
+
+        std::set<int> conf;
+
+        while(conf.size()<n)
+            conf.insert(sectorIdDist(rng));
+
+        configs.push_back(conf);
+
+        out << c << ",\"";
+
+        size_t k=0;
+        for(int s:conf)
+        {
+            out << s;
+            if(++k<conf.size())
+                out << ";";
+        }
+
+        out << "\"\n";
+    }
+
+    out << "\n";
+    
+
+    out.close();
+
+    std::cout << "Istanza salvata in " << filename << std::endl;
+}
+

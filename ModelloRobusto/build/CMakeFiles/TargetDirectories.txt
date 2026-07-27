@@ -1,0 +1,3 @@
+/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles/ModelloRobusto.dir
+/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles/edit_cache.dir
+/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles/rebuild_cache.dir
