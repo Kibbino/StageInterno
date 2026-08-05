@@ -10,15 +10,15 @@ using namespace std;
 int main() {
     try {
         generateDACCSV("path.csv", 10);
-        // Crea l'ambiente
+         
         GRBEnv env(true);
         env.set("LogFile", "nominale.log");
         env.start();
 
-        // Crea il modello
+        
         GRBModel model(env);
 
-        // Variabili
+        
         DACData data("path.csv");
         int T=data.grid.getNTimeslots();
         int C=data.getNConfigurations();
@@ -130,7 +130,7 @@ for (int t = 0; t < T; t++) {
 
         if (switch_rilevato) {
             cout << "t = " << t << " -> Attivata configurazione " << c;
-            // Verifica di controllo (opzionale ma utile per il debugging del modello)
+            
             if (s.at(t, c).get(GRB_DoubleAttr_X) < 0.5) {
                 cout << " [ATTENZIONE: s_c^t non si è attivata correttamente nel solutore!]";
             }
@@ -162,91 +162,3 @@ catch (...) {
 
 
 
-// class X {
-//     private:
-//         int T;
-//         int C;
-//         std::vector<GRBVar> x;
-
-//     public:
-//         X(int T, int C, GRBModel& model) : T(T), C(C) {
-//             for(int t = 0; t < T; t++) {
-//                 for(int c = 0; c < C; c++) {
-//                     string name = "x_" + to_string(t) + "_" + to_string(c);
-//                     x.push_back(model.addVar(0.0, 1.0, 0.0, GRB_BINARY, name));
-//                 }
-//             }
-            
-//         }
-
-//         GRBVar& at(int t, int c) {
-//             return x[t * C + c];
-//         }
-// };
-
-// class S {
-//     private:
-//         int T;
-//         int C;
-//         std::vector<GRBVar> s;
-
-//     public:
-//         S(int T, int C, GRBModel& model) : T(T), C(C) {
-//             for(int t = 0; t < T; t++) {
-//                 for(int c = 0; c < C; c++) {
-//                     string name = "x_" + to_string(t) + "_" + to_string(c);
-//                     s.push_back(model.addVar(0.0, 1.0, 0.0, GRB_BINARY, name));
-//                 }
-//             }
-            
-//         }
-
-//         GRBVar& at(int t, int c) {
-//             return s[t * C + c];
-//         }
-//     };
-// }
-
-// class X {
-//     private:
-//         int T;
-//         int C;
-//         std::vector<GRBVar> x;
-
-//     public:
-//         X(int T, int C, GRBModel& model) : T(T), C(C) {
-//             for(int t = 0; t < T; t++) {
-//                 for(int c = 0; c < C; c++) {
-//                     string name = "x_" + to_string(t) + "_" + to_string(c);
-//                     x.push_back(model.addVar(0.0, 1.0, 0.0, GRB_BINARY, name));
-//                 }
-//             }
-            
-//         }
-
-//         GRBVar& at(int t, int c) {
-//             return x[t * C + c];
-//         }
-// };
-
-// class S {
-//     private:
-//         int T;
-//         int C;
-//         std::vector<GRBVar> s;
-
-//     public:
-//         S(int T, int C, GRBModel& model) : T(T), C(C) {
-//             for(int t = 0; t < T; t++) {
-//                 for(int c = 0; c < C; c++) {
-//                     string name = "x_" + to_string(t) + "_" + to_string(c);
-//                     s.push_back(model.addVar(0.0, 1.0, 0.0, GRB_BINARY, name));
-//                 }
-//             }
-            
-//         }
-
-//         GRBVar& at(int t, int c) {
-//             return s[t * C + c];
-//         }
-// };

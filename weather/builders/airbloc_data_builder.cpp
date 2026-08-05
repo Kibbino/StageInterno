@@ -8,7 +8,7 @@ void generateDACCSV(const std::string& filename)
 {
     constexpr int ROWS = 20;
     constexpr int COLS = 20;
-    constexpr int TIMESLOTS = 15;     // oppure 45 se usi gli slot da 20 minuti
+    constexpr int TIMESLOTS = 15;     
 
     std::mt19937 rng(42);
 

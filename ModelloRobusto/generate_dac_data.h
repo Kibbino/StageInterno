@@ -91,7 +91,7 @@ public:
 class Grid {
 public:
     Grid(int rows, int cols, const TimeHorizon& time, int h);
-    Grid(const std::string& filename);
+    // Grid(const std::string& filename);
 
     int getNRows() const;
     int getNCols() const;
@@ -121,7 +121,7 @@ private:
 
 class DACData {
     public:
-    // DACData(Grid g, std::vector<Sector> s, std::vector<Configuration> c): grid(g), sectors(s), configurations(c) {}
+    
     DACData(const std::string& filename);
     Grid grid;
     std::vector<Sector> sectors;

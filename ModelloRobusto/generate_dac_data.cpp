@@ -12,13 +12,7 @@
 #include "Matrix.h"
 
 
-// STRUTTURA: La grid contiene tutti gli airblock, che ne esistono esattamente solo quelli contenuti in quell'unica grid. 
-// I settori conterranno dei puntatori a quegli airblock. Per settare agli airblock il traffico, sarà il costruttore della 
-// grid a farlo, o una sua funzione apposita
-// prima: creo la griglia, che crea gli airblock
-// poi: creo il vettore traffico e lo do alla funzione griglia che setta il traffico agli airblock
-// poi: creo i settori che puntano all'id dell'airblock segnato nel csv
-// poi: creo le configurazioni, che puntano agli id dei settori indicati nel csv, e controlla che l'unione dei settori formi la griglia
+
 
 void AirBlock::setglevel(int t, int g) {
     gLevel[t]=g;
@@ -152,7 +146,7 @@ Grid::Grid(int rows, int cols, const TimeHorizon& time, int h)
 
     for (int r = 0; r < rows; ++r)
         for (int c = 0; c < cols; ++c)
-            m_airBlocks.emplace_back(id++, r, c, time.size()); //penso che l'id non serva negli airblock
+            m_airBlocks.emplace_back(id++, r, c, time.size()); 
 }
 
 

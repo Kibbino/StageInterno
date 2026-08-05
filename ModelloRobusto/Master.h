@@ -10,10 +10,11 @@ using namespace std;
 
 class MasterSolution{
     public:
+    int status;
     Matrix<double> x;
     Matrix<double> s;
     double theta;    
-    MasterSolution(Matrix<GRBVar>& X, Matrix<GRBVar>& S, GRBLinExpr& theta, GRBModel& model): theta(model.get(GRB_DoubleAttr_ObjVal)), x(X.getnrows(), X.getncols()), s(X.getnrows(), X.getncols()) {
+    MasterSolution(Matrix<GRBVar>& X, Matrix<GRBVar>& S, GRBLinExpr& theta, GRBModel& model): theta(model.get(GRB_DoubleAttr_ObjVal)), x(X.getnrows(), X.getncols()), s(X.getnrows(), X.getncols()), status(model.get(GRB_IntAttr_Status)) {
         double t=model.get(GRB_DoubleAttr_ObjVal);
         int T=X.getnrows();
         int C=X.getncols();
@@ -49,6 +50,6 @@ class Master {
     int iter;
     Master(DACData, GRBEnv&);
     MasterSolution solve();
-    MasterSolution getActualSolution();
+    // MasterSolution getActualSolution();
     void addCut(SlaveSolution& slaveSol);    
 };

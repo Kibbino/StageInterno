@@ -9,7 +9,7 @@ MasterSolution Master::solve() {
     return solution;
 }
 
-Master::Master(DACData data, GRBEnv& env): T(data.grid.getNTimeslots()), C(data.getNConfigurations()), x(T,C), s(T,C), env(env), model(env), data(data), iter(1) { //forse env inutile
+Master::Master(DACData data, GRBEnv& env): T(data.grid.getNTimeslots()), C(data.getNConfigurations()), x(T,C), s(T,C), env(env), model(env), data(data), iter(1) { 
     int T=data.grid.getNTimeslots();
     int C=data.getNConfigurations();
     
@@ -42,7 +42,10 @@ Master::Master(DACData data, GRBEnv& env): T(data.grid.getNTimeslots()), C(data.
     for (int t = 0; t < T-1; t++) {
         int t_succ=t+1;
         for (int c = 0; c < C; c++) {
-            vector<int> c_similar=data.getSimilarConfigurationsIndex(data.configurations[c]);
+             vector<int> c_similar=data.getSimilarConfigurationsIndex(data.configurations[c]);
+            // vector<int> c_similar;
+            // c_similar.push_back(0); //DA RIMUOVERE
+            // c_similar.push_back(1); //DA RIMUOVERE
             GRBLinExpr sum = 0;
             for(int c_similar_idx=0; c_similar_idx < c_similar.size(); c_similar_idx++) {
                 sum += x.at(t_succ, c_similar[c_similar_idx]);
@@ -82,7 +85,7 @@ Master::Master(DACData data, GRBEnv& env): T(data.grid.getNTimeslots()), C(data.
     // Sincronizza il modello
     model.update();
 
-    // Imposta la funzione obiettivo passando direttamente la GRBVar
+
     model.setObjective(theta, GRB_MINIMIZE);
 
 }
@@ -94,13 +97,14 @@ void Master::addCut(SlaveSolution& slaveSol) {
         for(int c=0; c<C; c++) {
             double ConfigurationCExcess=0.0;
             for(int i=0; i<data.configurations[c].sectors.size(); i++) {
-                ConfigurationCExcess+=realizations[realizations.size()-1].e.at(data.configurations[c].sectors[i]->getIndex(),t);
+                ConfigurationCExcess+=slaveSol.e.at(data.configurations[c].sectors[i]->getIndex(),t);
+                cout<<"Eccesso del settore "<<data.configurations[c].sectors[i]->getIndex()<<" al tempo "<<t<<": "<<slaveSol.e.at(data.configurations[c].sectors[i]->getIndex(),t)<<endl;
             }
             cut += x.at(t,c) * ConfigurationCExcess; 
+            cout << "Eccesso della configurazione " << c << " al tempo " << t << ": " << ConfigurationCExcess << endl;
         }
     }
-    
-    model.addConstr(theta >= cut, "cut_" + to_string(iter));
+    model.addConstr(theta >= cut);
     model.update();
-    iter++;
+    
 }

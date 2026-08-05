@@ -9,14 +9,6 @@
 #include <algorithm>
 #include "utils.h"
 
-
-// STRUTTURA: La grid contiene tutti gli airblock, che ne esistono esattamente solo quelli contenuti in quell'unica grid. 
-// I settori conterranno dei puntatori a quegli airblock. Per settare agli airblock il traffico, sarà il costruttore della 
-// grid a farlo, o una sua funzione apposita
-// prima: creo la griglia, che crea gli airblock
-// poi: creo il vettore traffico e lo do alla funzione griglia che setta il traffico agli airblock
-// poi: creo i settori che puntano all'id dell'airblock segnato nel csv
-// poi: creo le configurazioni, che puntano agli id dei settori indicati nel csv, e controlla che l'unione dei settori formi la griglia
 template <class P>
 class Matrix {
 private:
@@ -153,8 +145,8 @@ bool Configuration::checkSimilarity(Configuration& c2) {
 class TimeSlot {
 public:
     int id;         // indice (0,1,2,...)
-    int startHour;  // es. 6
-    int endHour;    // es. 7
+    int startHour;  
+    int endHour;    
 
     TimeSlot(int id, int startHour, int endHour): id(id), startHour(startHour), endHour(endHour) {}
 };
@@ -243,12 +235,11 @@ Grid::Grid(int rows, int cols, const TimeHorizon& time, int h)
 
     for (int r = 0; r < rows; ++r)
         for (int c = 0; c < cols; ++c)
-            m_airBlocks.emplace_back(id++, r, c, time.size()); //penso che l'id non serva negli airblock
+            m_airBlocks.emplace_back(id++, r, c, time.size()); 
 }
 
 class DACData {
     public:
-    // DACData(Grid g, std::vector<Sector> s, std::vector<Configuration> c): grid(g), sectors(s), configurations(c) {}
     DACData(const std::string& filename);
     Grid grid;
     std::vector<Sector> sectors;
