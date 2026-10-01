@@ -35,9 +35,17 @@ int AirBlock::getglevel(int t) {
     return gLevel[t];
 }
 
-void AirBlock::setTraffic(int time, double t){
-    traffic[time]=t;
+//versione con timeslot
+
+//  void AirBlock::setTraffic(TimeSlot& time, double traff){
+//     traffic[time.id]=traff;
+// }
+
+void AirBlock::setTraffic(int time, double traff){
+     traffic[time]=traff;
 }
+
+
 double AirBlock::getTraffic(int t) {
     return traffic[t];
 }
@@ -153,6 +161,7 @@ Grid::Grid(int rows, int cols, const TimeHorizon& time, int h)
 
 Grid DACData::readGrid(const std::string& filename)
 {
+    // SEZIONE DA MODIFICARE deve leggere quanto dura lo slot di tempo e quanti slot sono da file
     std::ifstream in(filename);
 
     if (!in)
@@ -182,18 +191,33 @@ Grid DACData::readGrid(const std::string& filename)
             continue;
         }
 
-        if (section == "[TIME]")
-        {
-            auto f = split(line, ',');
+        else if(section == "[TIME]")
+{
+    std::cout << "Lettura TIME" << std::endl;
+    auto f = split(line, ',');
 
-            int id    = std::stoi(f[0]);
-            int start = std::stoi(f[1]);
-            int end   = std::stoi(f[2]);
+    int id = stoi(f[0]);
 
-            time.slots.emplace_back(id, start, end);
-        }
+    // Converte HH:MM in minuti dalla mezzanotte
+    auto parseTime = [](const std::string& time) -> int
+    {
+        auto parts = split(time, ':');
+
+        int hour   = stoi(parts[0]);
+        int minute = stoi(parts[1]);
+
+        return hour * 60 + minute;
+    };
+
+    int start = parseTime(f[1]);
+    int end   = parseTime(f[2]);
+
+    time.slots.emplace_back(id, start, end);
+    std::cout << "Slot temporale: " << id << " (" << start << " - " << end << ")" << std::endl;
+}
         else if (section == "[GRID]")
         {
+            std::cout << "Lettura GRID" << std::endl;
             auto f = split(line, ',');
 
             rows = std::stoi(f[0]);
@@ -224,6 +248,7 @@ std::vector<int> DACData::getSimilarConfigurationsIndex(Configuration& c1) {
 
 
 DACData::DACData(const std::string& filename): grid(readGrid(filename)), epsilon(1e-4) {
+    std::cout<<"finito llettura griglia"<<std::endl;
     readRest(filename);
 }
 std::string DACData::trim(std::string s)

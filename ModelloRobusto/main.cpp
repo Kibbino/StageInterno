@@ -3,6 +3,8 @@
 #include "generate_dac_data.h"
 #include "Matrix.h"
 #include "utils.h"
+// #include "Writer.h"
+// #include "TestData.h"
 #include "Master.h"
 #include "Slave.h"
 #include <iostream>
@@ -12,27 +14,31 @@ using namespace std;
 
 int main() {
     try {
-        //generateDACCSV("path.csv", 8); //10
+        std::cout << "Generazione dati DAC..." << std::endl;
+        generateDACCSV("path.csv", 8); //10
+        std::cout << "Dati DAC generati e salvati in path.csv" << std::endl;
         
         GRBEnv env(true);
         env.set("LogFile", "robusto.log");
+        std::cout << "Inizializzazione ambiente Gurobi..." << std::endl;
         env.start();
 
-        
-        DACData data("prova.csv");
-        for(int c=0;c<data.configurations.size();c++){
-    cout << "Configurazione " << c << endl;
+        std::cout<<"inizio"<<std::endl;
+        DACData data("path.csv");
+        std::cout<<"lettura dati"<<std::endl;
+        for(int c=0;c<data.configurations.size();c++) {
+        cout << "Configurazione " << c << endl;
 
-    for(auto s : data.configurations[c].sectors){
-        cout << " settore "
-             << s->getIndex()
-             << " cap t0="
-             << s->getCapacity(0)
-             << " traffic t0="
-             << s->getTraffic(0)
-             << endl;
-    }
-}
+        for(auto s : data.configurations[c].sectors){
+            cout << " settore "
+                << s->getIndex()
+                << " cap t0="
+                << s->getCapacity(0)
+                << " traffic t0="
+                << s->getTraffic(0)
+                << endl;
+            }
+        }
         Master master(data, env);
 
         

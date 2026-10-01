@@ -10,6 +10,35 @@
 #include <algorithm>
 #include <array>
 
+class TimeSlot {
+public:
+    int id;         // indice (0,1,2,...)
+    int startMinute;  // es. 6
+    int endMinute;    // es. 7
+
+    TimeSlot(int id, int startMinute, int endMinute): id(id), startMinute(startMinute), endMinute(endMinute) {}
+};
+
+class TimeHorizon {
+public:
+    std::vector<TimeSlot> slots;
+
+    TimeHorizon(int startHour, int endHour) {
+        int id = 0;
+        for (int h = startHour; h < endHour; ++h) {
+            slots.emplace_back(id++, h, h + 1);
+        }
+    }
+
+    int size() const {
+        return slots.size();
+    }
+
+    const TimeSlot& get(int t) const {
+        return slots[t];
+    }
+};
+
 class AirBlock {
     public:
         int index;
@@ -20,9 +49,18 @@ class AirBlock {
         std::vector<int> pLevel;
         std::vector<int> gLevel;
 
-        AirBlock(int index, int r, int c, int ntimes): index(index), row(r), col(c), traffic(ntimes, 0.0), pLevel(ntimes, 0), gLevel(ntimes, 0) {}
+        AirBlock(int index, int r, int c, int ntimes)
+    : index(index),
+      row(r),
+      col(c),
+      traffic(ntimes, 0.0),
+      pLevel(ntimes, 0),
+      gLevel(ntimes, 0) {}
+
 
         double getTraffic(int t);
+        // versione con timeslot
+        // void setTraffic(TimeSlot& time, double traffic);
         void setTraffic(int time, double traffic);
         int getglevel(int t);
         int getplevel(int t);
@@ -59,34 +97,7 @@ class Configuration {
         int getExcess(int t);   //ritorna l'eccesso totale della configurazione all'intervallo temporale t
 };
 
-class TimeSlot {
-public:
-    int id;         // indice (0,1,2,...)
-    int startHour;  // es. 6
-    int endHour;    // es. 7
 
-    TimeSlot(int id, int startHour, int endHour): id(id), startHour(startHour), endHour(endHour) {}
-};
-
-class TimeHorizon {
-public:
-    std::vector<TimeSlot> slots;
-
-    TimeHorizon(int startHour, int endHour) {
-        int id = 0;
-        for (int h = startHour; h < endHour; ++h) {
-            slots.emplace_back(id++, h, h + 1);
-        }
-    }
-
-    int size() const {
-        return slots.size();
-    }
-
-    const TimeSlot& get(int t) const {
-        return slots[t];
-    }
-};
 
 class Grid {
 public:

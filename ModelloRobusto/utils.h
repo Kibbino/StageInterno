@@ -20,6 +20,8 @@ auto hourlyFactor(int t)
         return 0.7 + 0.4 * std::sin(3.14159265 * t / 15.0);
     };
 
+
+
 void generateDACCSV(const std::string& filename, unsigned int seed)
 {
     std::mt19937 rng(seed);
@@ -45,8 +47,16 @@ void generateDACCSV(const std::string& filename, unsigned int seed)
     out << "[TIME]\n";
     out << "id,start,end\n";
 
-    for(int t=0;t<NTIMES;t++)
-        out << t << "," << 6+t << "," << 7+t << "\n";
+    for (int t = 0; t < NTIMES; t++)
+{
+    int startHour = 6 + t;
+    int endHour   = 7 + t;
+
+    out << t << ","
+        << startHour << ":00,"
+        << endHour << ":00\n";
+}
+
 
     out << "\n";
 
@@ -189,4 +199,3 @@ out << "\n";
 
     std::cout << "Istanza salvata in " << filename << std::endl;
 }
-
