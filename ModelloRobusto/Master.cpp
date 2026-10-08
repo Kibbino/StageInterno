@@ -6,10 +6,11 @@
 MasterSolution Master::solve() {
     model.optimize();
     MasterSolution solution(x,s,theta, model);
+    iter++;
     return solution;
 }
 
-Master::Master(DACData data, GRBEnv& env): T(data.grid.getNTimeslots()), C(data.getNConfigurations()), x(T,C), s(T,C), env(env), model(env), data(data), iter(1) { 
+Master::Master(DACData data, GRBEnv& env): T(data.grid.getNTimeslots()), C(data.getNConfigurations()), x(T,C), s(T,C), env(env), model(env), data(data), iter(0) { 
     int T=data.grid.getNTimeslots();
     int C=data.getNConfigurations();
     
@@ -98,10 +99,9 @@ void Master::addCut(SlaveSolution& slaveSol) {
             double ConfigurationCExcess=0.0;
             for(int i=0; i<data.configurations[c].sectors.size(); i++) {
                 ConfigurationCExcess+=slaveSol.e.at(data.configurations[c].sectors[i]->getIndex(),t);
-                cout<<"Eccesso del settore "<<data.configurations[c].sectors[i]->getIndex()<<" al tempo "<<t<<": "<<slaveSol.e.at(data.configurations[c].sectors[i]->getIndex(),t)<<endl;
+                
             }
             cut += x.at(t,c) * ConfigurationCExcess; 
-            cout << "Eccesso della configurazione " << c << " al tempo " << t << ": " << ConfigurationCExcess << endl;
         }
     }
     model.addConstr(theta >= cut);

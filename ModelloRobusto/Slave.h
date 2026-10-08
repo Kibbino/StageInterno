@@ -25,8 +25,10 @@ class Slave {
     DACData data;
     public:
     Slave(MasterSolution& s, GRBEnv& env, DACData data);
+    void constructObjective();
     SlaveSolution solve();
     GRBLinExpr f(int i, int t, Matrix<GRBVar>& y);     //indice i è riferito al settore, e t al tempo. y(k,t) invece dice se si verifica maltempo nell'airblock k tempo t
+    void update(MasterSolution& s);
 };
 
 class SlaveSolution {

@@ -86,20 +86,7 @@ for (int t = 0; t < T; t++) {
     }
 
 
-    GRBLinExpr sum=0.0;
-    for(int t=0; t<sol.x.getnrows(); t++) {
-        for(int c=0; c<sol.x.getncols(); c++) {
-            GRBLinExpr excess=0.0;
-            for(int i=0; i<data.configurations[c].sectors.size(); i++) {
-                excess+=e.at(data.configurations[c].sectors[i]->getIndex(),t);
-            }
-            
-            sum+=sol.x.at(t,c)*excess;
-        }
-    }
-   
-    model.setObjective(sum, GRB_MAXIMIZE);
-    obj=sum;
+    constructObjective();
 
 }
 
@@ -123,6 +110,29 @@ GRBLinExpr Slave::f(int i, int t, Matrix<GRBVar>& y) { // indice i = settore, t 
     
     return (traffic-capacity) + media;
 }
+
+void Slave::constructObjective() {
+    GRBLinExpr sum=0.0;
+    for(int t=0; t<solution.x.getnrows(); t++) {
+        for(int c=0; c<solution.x.getncols(); c++) {
+            GRBLinExpr excess=0.0;
+            for(int i=0; i<data.configurations[c].sectors.size(); i++) {
+                excess+=e.at(data.configurations[c].sectors[i]->getIndex(),t);
+            }
+            
+            sum+=solution.x.at(t,c)*excess;
+        }
+    }
+   
+    model.setObjective(sum, GRB_MAXIMIZE);
+    obj=sum;
+}
+
+void Slave::update(MasterSolution& s) {
+    solution = s;
+    this->constructObjective();
+}
+
 
 SlaveSolution Slave::solve() {
     model.optimize();

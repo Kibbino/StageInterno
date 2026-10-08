@@ -40,15 +40,15 @@ int main() {
             }
         }
         Master master(data, env);
-
+        MasterSolution sol=master.solve();
+        Slave slave(sol, env, data); 
         
-        
-
         bool converged=false;
-        int iter=1;
         while(!converged) {
-            MasterSolution sol=master.solve();
-            Slave slave(sol, env, data);
+            std::cout << "Iterazione " << master.iter << std::endl;
+            sol=master.solve();
+            slave.update(sol);
+            
             cout<<"risoluzione slave"<<endl;
             SlaveSolution slaveSol=slave.solve();
             double max_excess=slaveSol.excess;
