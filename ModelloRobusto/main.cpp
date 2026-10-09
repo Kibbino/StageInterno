@@ -2,7 +2,8 @@
 #include "gurobi_c++.h"
 #include "generate_dac_data.h"
 #include "Matrix.h"
-#include "utils.h"
+#include "DACCSVGenerator.h"
+// #include "utils.h"
 // #include "Writer.h"
 // #include "TestData.h"
 #include "Master.h"
@@ -14,8 +15,10 @@ using namespace std;
 
 int main() {
     try {
-        std::cout << "Generazione dati DAC..." << std::endl;
-        generateDACCSV("path.csv", 8); //10
+        // std::cout << "Generazione dati DAC..." << std::endl;
+        // generateDACCSV("path.csv", 8); //10
+        DACCSVGenerator generator(20, 20, 15, 100, 20);
+        generator.generateDACCSV("path.csv", 8);
         std::cout << "Dati DAC generati e salvati in path.csv" << std::endl;
         
         GRBEnv env(true);

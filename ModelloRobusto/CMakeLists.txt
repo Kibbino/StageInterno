@@ -14,6 +14,7 @@ add_executable(ModelloRobusto
     Master.cpp
     Slave.cpp
     generate_dac_data.cpp
+    DACCSVGenerator.cpp
 )
 
 target_link_libraries(ModelloRobusto

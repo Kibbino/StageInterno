@@ -1,16 +1,8 @@
-#pragma once
-#include <iostream> 
-#include <vector>
-#include <fstream>
-#include <random>
-#include <set>
-#include <sstream>
-#include <string>
-#include <unordered_map>
-#include <algorithm>
+#include "DACCSVGenerator.h"
 
+DACCSVGenerator::DACCSVGenerator(int rows, int cols, int ntimes, int nsectors, int nconfigs): ROWS(rows), COLS(cols), NTIMES(ntimes), NSECTORS(nsectors), NCONFIGS(nconfigs) {}
 
-auto hourlyFactor(int t)
+double DACCSVGenerator::hourlyFactor(int t)
     {
         // Picchi di traffico
         if (t == 0)  return 1.8;   // 6-7
@@ -21,17 +13,9 @@ auto hourlyFactor(int t)
     };
 
 
-
-void generateDACCSV(const std::string& filename, unsigned int seed)
+void DACCSVGenerator::generateDACCSV(const std::string& filename, unsigned int seed)
 {
     std::mt19937 rng(seed);
-
-    constexpr int ROWS = 20;
-    constexpr int COLS = 20;
-    constexpr int NTIMES = 15;
-
-    constexpr int NSECTORS = 100;
-    constexpr int NCONFIGS = 20;
 
     std::uniform_int_distribution<int> blockDist(0, ROWS*COLS-1);
     std::uniform_int_distribution<int> sectorSizeDist(8,30);
