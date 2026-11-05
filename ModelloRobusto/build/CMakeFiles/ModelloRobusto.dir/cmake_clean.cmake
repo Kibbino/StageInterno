@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ModelloRobusto.dir/link.d"
+  "CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o"
+  "CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o.d"
   "CMakeFiles/ModelloRobusto.dir/Master.cpp.o"
   "CMakeFiles/ModelloRobusto.dir/Master.cpp.o.d"
   "CMakeFiles/ModelloRobusto.dir/Slave.cpp.o"

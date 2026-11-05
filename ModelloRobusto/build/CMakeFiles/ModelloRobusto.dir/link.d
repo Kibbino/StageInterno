@@ -6,6 +6,7 @@ ModelloRobusto: \
   CMakeFiles/ModelloRobusto.dir/Master.cpp.o \
   CMakeFiles/ModelloRobusto.dir/Slave.cpp.o \
   CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o \
+  CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o \
   /opt/gurobi1302/linux64/lib/libgurobi_c++.a \
   /opt/gurobi1302/linux64/lib/libgurobi130.so \
   /usr/lib/gcc/x86_64-linux-gnu/13/libstdc++.so \
@@ -52,6 +53,8 @@ CMakeFiles/ModelloRobusto.dir/Master.cpp.o:
 CMakeFiles/ModelloRobusto.dir/Slave.cpp.o:
 
 CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o:
+
+CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o:
 
 /opt/gurobi1302/linux64/lib/libgurobi_c++.a:
 

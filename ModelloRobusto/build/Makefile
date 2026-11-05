@@ -129,6 +129,30 @@ ModelloRobusto/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/build
 .PHONY : ModelloRobusto/fast
 
+DACCSVGenerator.o: DACCSVGenerator.cpp.o
+.PHONY : DACCSVGenerator.o
+
+# target to build an object file
+DACCSVGenerator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o
+.PHONY : DACCSVGenerator.cpp.o
+
+DACCSVGenerator.i: DACCSVGenerator.cpp.i
+.PHONY : DACCSVGenerator.i
+
+# target to preprocess a source file
+DACCSVGenerator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.i
+.PHONY : DACCSVGenerator.cpp.i
+
+DACCSVGenerator.s: DACCSVGenerator.cpp.s
+.PHONY : DACCSVGenerator.s
+
+# target to generate assembly for a file
+DACCSVGenerator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.s
+.PHONY : DACCSVGenerator.cpp.s
+
 Master.o: Master.cpp.o
 .PHONY : Master.o
 
@@ -234,6 +258,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ModelloRobusto"
+	@echo "... DACCSVGenerator.o"
+	@echo "... DACCSVGenerator.i"
+	@echo "... DACCSVGenerator.s"
 	@echo "... Master.o"
 	@echo "... Master.i"
 	@echo "... Master.s"
