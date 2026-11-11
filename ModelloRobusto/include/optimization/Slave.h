@@ -1,7 +1,7 @@
 #pragma once
 #include "gurobi_c++.h"
-#include "generate_dac_data.h"
-#include "Matrix.h"
+#include "include/data/generate_dac_data.h"
+#include "include/data/Matrix.h"
 #include <iostream>
 #include <vector>
 

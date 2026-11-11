@@ -72,96 +72,112 @@ include CMakeFiles/ModelloRobusto.dir/flags.make
 CMakeFiles/ModelloRobusto.dir/codegen:
 .PHONY : CMakeFiles/ModelloRobusto.dir/codegen
 
-CMakeFiles/ModelloRobusto.dir/main.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
-CMakeFiles/ModelloRobusto.dir/main.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/main.cpp
-CMakeFiles/ModelloRobusto.dir/main.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ModelloRobusto.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/main.cpp.o -MF CMakeFiles/ModelloRobusto.dir/main.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/main.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/main.cpp"
+CMakeFiles/ModelloRobusto.dir/src/main.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
+CMakeFiles/ModelloRobusto.dir/src/main.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/src/main.cpp
+CMakeFiles/ModelloRobusto.dir/src/main.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ModelloRobusto.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/src/main.cpp.o -MF CMakeFiles/ModelloRobusto.dir/src/main.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/src/main.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/main.cpp"
 
-CMakeFiles/ModelloRobusto.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/main.cpp" > CMakeFiles/ModelloRobusto.dir/main.cpp.i
+CMakeFiles/ModelloRobusto.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/main.cpp" > CMakeFiles/ModelloRobusto.dir/src/main.cpp.i
 
-CMakeFiles/ModelloRobusto.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/main.cpp" -o CMakeFiles/ModelloRobusto.dir/main.cpp.s
+CMakeFiles/ModelloRobusto.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/main.cpp" -o CMakeFiles/ModelloRobusto.dir/src/main.cpp.s
 
-CMakeFiles/ModelloRobusto.dir/Master.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
-CMakeFiles/ModelloRobusto.dir/Master.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/Master.cpp
-CMakeFiles/ModelloRobusto.dir/Master.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ModelloRobusto.dir/Master.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/Master.cpp.o -MF CMakeFiles/ModelloRobusto.dir/Master.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/Master.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/Master.cpp"
+CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
+CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/src/optimization/Master.cpp
+CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o -MF CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/optimization/Master.cpp"
 
-CMakeFiles/ModelloRobusto.dir/Master.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/Master.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/Master.cpp" > CMakeFiles/ModelloRobusto.dir/Master.cpp.i
+CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/optimization/Master.cpp" > CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.i
 
-CMakeFiles/ModelloRobusto.dir/Master.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/Master.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/Master.cpp" -o CMakeFiles/ModelloRobusto.dir/Master.cpp.s
+CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/optimization/Master.cpp" -o CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.s
 
-CMakeFiles/ModelloRobusto.dir/Slave.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
-CMakeFiles/ModelloRobusto.dir/Slave.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/Slave.cpp
-CMakeFiles/ModelloRobusto.dir/Slave.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ModelloRobusto.dir/Slave.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/Slave.cpp.o -MF CMakeFiles/ModelloRobusto.dir/Slave.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/Slave.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/Slave.cpp"
+CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
+CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/src/optimization/Slave.cpp
+CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o -MF CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/optimization/Slave.cpp"
 
-CMakeFiles/ModelloRobusto.dir/Slave.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/Slave.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/Slave.cpp" > CMakeFiles/ModelloRobusto.dir/Slave.cpp.i
+CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/optimization/Slave.cpp" > CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.i
 
-CMakeFiles/ModelloRobusto.dir/Slave.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/Slave.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/Slave.cpp" -o CMakeFiles/ModelloRobusto.dir/Slave.cpp.s
+CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/optimization/Slave.cpp" -o CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.s
 
-CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
-CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/generate_dac_data.cpp
-CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o -MF CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/generate_dac_data.cpp"
+CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
+CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/src/data/generate_dac_data.cpp
+CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o -MF CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/data/generate_dac_data.cpp"
 
-CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/generate_dac_data.cpp" > CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.i
+CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/data/generate_dac_data.cpp" > CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.i
 
-CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/generate_dac_data.cpp" -o CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.s
+CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/data/generate_dac_data.cpp" -o CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.s
 
-CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
-CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/DACCSVGenerator.cpp
-CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o -MF CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/DACCSVGenerator.cpp"
+CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
+CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/src/data/DACCSVGenerator.cpp
+CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o -MF CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/data/DACCSVGenerator.cpp"
 
-CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/DACCSVGenerator.cpp" > CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.i
+CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/data/DACCSVGenerator.cpp" > CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.i
 
-CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/DACCSVGenerator.cpp" -o CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.s
+CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/data/DACCSVGenerator.cpp" -o CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.s
+
+CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o: CMakeFiles/ModelloRobusto.dir/flags.make
+CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o: /mnt/c/Dani_uni/Terzo\ Anno/Tirocinio/StageInterno/ModelloRobusto/src/profiler/AlgorithmProfiler.cpp
+CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o -MF CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o.d -o CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o -c "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/profiler/AlgorithmProfiler.cpp"
+
+CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/profiler/AlgorithmProfiler.cpp" > CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.i
+
+CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/src/profiler/AlgorithmProfiler.cpp" -o CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.s
 
 # Object files for target ModelloRobusto
 ModelloRobusto_OBJECTS = \
-"CMakeFiles/ModelloRobusto.dir/main.cpp.o" \
-"CMakeFiles/ModelloRobusto.dir/Master.cpp.o" \
-"CMakeFiles/ModelloRobusto.dir/Slave.cpp.o" \
-"CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o" \
-"CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o"
+"CMakeFiles/ModelloRobusto.dir/src/main.cpp.o" \
+"CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o" \
+"CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o" \
+"CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o" \
+"CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o" \
+"CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o"
 
 # External object files for target ModelloRobusto
 ModelloRobusto_EXTERNAL_OBJECTS =
 
-ModelloRobusto: CMakeFiles/ModelloRobusto.dir/main.cpp.o
-ModelloRobusto: CMakeFiles/ModelloRobusto.dir/Master.cpp.o
-ModelloRobusto: CMakeFiles/ModelloRobusto.dir/Slave.cpp.o
-ModelloRobusto: CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o
-ModelloRobusto: CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o
+ModelloRobusto: CMakeFiles/ModelloRobusto.dir/src/main.cpp.o
+ModelloRobusto: CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o
+ModelloRobusto: CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o
+ModelloRobusto: CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o
+ModelloRobusto: CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o
+ModelloRobusto: CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o
 ModelloRobusto: CMakeFiles/ModelloRobusto.dir/build.make
 ModelloRobusto: CMakeFiles/ModelloRobusto.dir/compiler_depend.ts
 ModelloRobusto: CMakeFiles/ModelloRobusto.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable ModelloRobusto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ModelloRobusto"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ModelloRobusto.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

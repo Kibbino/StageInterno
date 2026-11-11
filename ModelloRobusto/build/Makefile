@@ -129,125 +129,149 @@ ModelloRobusto/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/build
 .PHONY : ModelloRobusto/fast
 
-DACCSVGenerator.o: DACCSVGenerator.cpp.o
-.PHONY : DACCSVGenerator.o
+src/data/DACCSVGenerator.o: src/data/DACCSVGenerator.cpp.o
+.PHONY : src/data/DACCSVGenerator.o
 
 # target to build an object file
-DACCSVGenerator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o
-.PHONY : DACCSVGenerator.cpp.o
+src/data/DACCSVGenerator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o
+.PHONY : src/data/DACCSVGenerator.cpp.o
 
-DACCSVGenerator.i: DACCSVGenerator.cpp.i
-.PHONY : DACCSVGenerator.i
+src/data/DACCSVGenerator.i: src/data/DACCSVGenerator.cpp.i
+.PHONY : src/data/DACCSVGenerator.i
 
 # target to preprocess a source file
-DACCSVGenerator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.i
-.PHONY : DACCSVGenerator.cpp.i
+src/data/DACCSVGenerator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.i
+.PHONY : src/data/DACCSVGenerator.cpp.i
 
-DACCSVGenerator.s: DACCSVGenerator.cpp.s
-.PHONY : DACCSVGenerator.s
+src/data/DACCSVGenerator.s: src/data/DACCSVGenerator.cpp.s
+.PHONY : src/data/DACCSVGenerator.s
 
 # target to generate assembly for a file
-DACCSVGenerator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.s
-.PHONY : DACCSVGenerator.cpp.s
+src/data/DACCSVGenerator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.s
+.PHONY : src/data/DACCSVGenerator.cpp.s
 
-Master.o: Master.cpp.o
-.PHONY : Master.o
+src/data/generate_dac_data.o: src/data/generate_dac_data.cpp.o
+.PHONY : src/data/generate_dac_data.o
 
 # target to build an object file
-Master.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/Master.cpp.o
-.PHONY : Master.cpp.o
+src/data/generate_dac_data.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o
+.PHONY : src/data/generate_dac_data.cpp.o
 
-Master.i: Master.cpp.i
-.PHONY : Master.i
+src/data/generate_dac_data.i: src/data/generate_dac_data.cpp.i
+.PHONY : src/data/generate_dac_data.i
 
 # target to preprocess a source file
-Master.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/Master.cpp.i
-.PHONY : Master.cpp.i
+src/data/generate_dac_data.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.i
+.PHONY : src/data/generate_dac_data.cpp.i
 
-Master.s: Master.cpp.s
-.PHONY : Master.s
+src/data/generate_dac_data.s: src/data/generate_dac_data.cpp.s
+.PHONY : src/data/generate_dac_data.s
 
 # target to generate assembly for a file
-Master.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/Master.cpp.s
-.PHONY : Master.cpp.s
+src/data/generate_dac_data.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.s
+.PHONY : src/data/generate_dac_data.cpp.s
 
-Slave.o: Slave.cpp.o
-.PHONY : Slave.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-Slave.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/Slave.cpp.o
-.PHONY : Slave.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-Slave.i: Slave.cpp.i
-.PHONY : Slave.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-Slave.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/Slave.cpp.i
-.PHONY : Slave.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-Slave.s: Slave.cpp.s
-.PHONY : Slave.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-Slave.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/Slave.cpp.s
-.PHONY : Slave.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
-generate_dac_data.o: generate_dac_data.cpp.o
-.PHONY : generate_dac_data.o
+src/optimization/Master.o: src/optimization/Master.cpp.o
+.PHONY : src/optimization/Master.o
 
 # target to build an object file
-generate_dac_data.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o
-.PHONY : generate_dac_data.cpp.o
+src/optimization/Master.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o
+.PHONY : src/optimization/Master.cpp.o
 
-generate_dac_data.i: generate_dac_data.cpp.i
-.PHONY : generate_dac_data.i
+src/optimization/Master.i: src/optimization/Master.cpp.i
+.PHONY : src/optimization/Master.i
 
 # target to preprocess a source file
-generate_dac_data.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.i
-.PHONY : generate_dac_data.cpp.i
+src/optimization/Master.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.i
+.PHONY : src/optimization/Master.cpp.i
 
-generate_dac_data.s: generate_dac_data.cpp.s
-.PHONY : generate_dac_data.s
+src/optimization/Master.s: src/optimization/Master.cpp.s
+.PHONY : src/optimization/Master.s
 
 # target to generate assembly for a file
-generate_dac_data.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.s
-.PHONY : generate_dac_data.cpp.s
+src/optimization/Master.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.s
+.PHONY : src/optimization/Master.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/optimization/Slave.o: src/optimization/Slave.cpp.o
+.PHONY : src/optimization/Slave.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/optimization/Slave.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o
+.PHONY : src/optimization/Slave.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/optimization/Slave.i: src/optimization/Slave.cpp.i
+.PHONY : src/optimization/Slave.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/optimization/Slave.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.i
+.PHONY : src/optimization/Slave.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/optimization/Slave.s: src/optimization/Slave.cpp.s
+.PHONY : src/optimization/Slave.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/optimization/Slave.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.s
+.PHONY : src/optimization/Slave.cpp.s
+
+src/profiler/AlgorithmProfiler.o: src/profiler/AlgorithmProfiler.cpp.o
+.PHONY : src/profiler/AlgorithmProfiler.o
+
+# target to build an object file
+src/profiler/AlgorithmProfiler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o
+.PHONY : src/profiler/AlgorithmProfiler.cpp.o
+
+src/profiler/AlgorithmProfiler.i: src/profiler/AlgorithmProfiler.cpp.i
+.PHONY : src/profiler/AlgorithmProfiler.i
+
+# target to preprocess a source file
+src/profiler/AlgorithmProfiler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.i
+.PHONY : src/profiler/AlgorithmProfiler.cpp.i
+
+src/profiler/AlgorithmProfiler.s: src/profiler/AlgorithmProfiler.cpp.s
+.PHONY : src/profiler/AlgorithmProfiler.s
+
+# target to generate assembly for a file
+src/profiler/AlgorithmProfiler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ModelloRobusto.dir/build.make CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.s
+.PHONY : src/profiler/AlgorithmProfiler.cpp.s
 
 # Help Target
 help:
@@ -258,21 +282,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ModelloRobusto"
-	@echo "... DACCSVGenerator.o"
-	@echo "... DACCSVGenerator.i"
-	@echo "... DACCSVGenerator.s"
-	@echo "... Master.o"
-	@echo "... Master.i"
-	@echo "... Master.s"
-	@echo "... Slave.o"
-	@echo "... Slave.i"
-	@echo "... Slave.s"
-	@echo "... generate_dac_data.o"
-	@echo "... generate_dac_data.i"
-	@echo "... generate_dac_data.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/data/DACCSVGenerator.o"
+	@echo "... src/data/DACCSVGenerator.i"
+	@echo "... src/data/DACCSVGenerator.s"
+	@echo "... src/data/generate_dac_data.o"
+	@echo "... src/data/generate_dac_data.i"
+	@echo "... src/data/generate_dac_data.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/optimization/Master.o"
+	@echo "... src/optimization/Master.i"
+	@echo "... src/optimization/Master.s"
+	@echo "... src/optimization/Slave.o"
+	@echo "... src/optimization/Slave.i"
+	@echo "... src/optimization/Slave.s"
+	@echo "... src/profiler/AlgorithmProfiler.o"
+	@echo "... src/profiler/AlgorithmProfiler.i"
+	@echo "... src/profiler/AlgorithmProfiler.s"
 .PHONY : help
 
 

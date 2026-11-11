@@ -1,8 +1,8 @@
 #pragma once
 #include "gurobi_c++.h"
-#include "Matrix.h"
-#include "generate_dac_data.h"
-#include "Slave.h"
+#include "include/data/Matrix.h"
+#include "include/data/generate_dac_data.h"
+#include "include/optimization/Slave.h"
 #include <vector>
 
 

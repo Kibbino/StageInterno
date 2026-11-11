@@ -1,0 +1,8 @@
+InstanceName,TotalTime,MasterCreationTime,SlaveCreationTime,DataLoadingTime,Iterations,ObjectiveValue,Converged
+DAC_instance,7.010367,0.068163,1.344178,5.212729,4,21297.887737,1
+
+Iteration,MasterSolveTime,SlaveUpdateTime,SlaveSolveTime,CutGenerationTime
+2,0.021590,0.006015,1.357890,0.000287
+3,0.050739,0.006461,1.476297,0.000350
+4,0.033727,0.009069,1.313932,0.000334
+5,0.034487,0.004930,1.217367,0.000000

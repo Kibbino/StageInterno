@@ -1,5 +1,5 @@
-#include "Slave.h"
-#include "Master.h"
+#include "include/optimization/Slave.h"
+#include "include/optimization/Master.h"
 
 Slave::Slave(MasterSolution& sol, GRBEnv& env, DACData data): T(data.grid.getNTimeslots()), env(env), solution(sol), model(env), data(data), e(data.sectors.size(), T), y(data.grid.getNCols() * data.grid.getNRows(), T), z(data.sectors.size(),T) {
     //creo modello slave

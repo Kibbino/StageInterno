@@ -1,4 +1,4 @@
-#include "DACCSVGenerator.h"
+#include "include/data/DACCSVGenerator.h"
 
 DACCSVGenerator::DACCSVGenerator(int rows, int cols, int ntimes, int nsectors, int nconfigs): ROWS(rows), COLS(cols), NTIMES(ntimes), NSECTORS(nsectors), NCONFIGS(nconfigs) {}
 
@@ -15,15 +15,50 @@ double DACCSVGenerator::hourlyFactor(int t)
 
 void DACCSVGenerator::generateDACCSV(const std::string& filename, unsigned int seed)
 {
+    std::cout << "Generazione dati DAC..." << std::endl;
     std::mt19937 rng(seed);
 
     std::uniform_int_distribution<int> blockDist(0, ROWS*COLS-1);
-    std::uniform_int_distribution<int> sectorSizeDist(8,30);
-    std::uniform_real_distribution<double> capacityDist(20.0,50.0);
-    std::normal_distribution<double> capacityNoise(1.0,0.05);
-    std::normal_distribution<double> noise(1.0, 0.15);
+    std::cout << "1 riga"<<std::endl;
+    int totalBlocks = ROWS * COLS;
+int minSectorSize = std::min(8, totalBlocks);
+int maxSectorSize = std::min(30, totalBlocks);
 
-    std::ofstream out(filename);
+std::uniform_int_distribution<int> sectorSizeDist(
+    minSectorSize, maxSectorSize
+);
+    std::cout << "1 riga"<<std::endl;
+    std::uniform_real_distribution<double> capacityDist(20.0,50.0);
+    std::cout << "1 riga"<<std::endl;
+    std::normal_distribution<double> capacityNoise(1.0,0.05);
+    std::cout << "1 riga"<<std::endl;
+    std::normal_distribution<double> noise(1.0, 0.15);
+    std::cout << "1 riga"<<std::endl;
+
+    std::filesystem::path filePath(filename);
+
+try
+{
+    if (!filePath.parent_path().empty())
+    {
+        std::filesystem::create_directories(filePath.parent_path());
+    }
+}
+catch (const std::filesystem::filesystem_error& e)
+{
+    std::cerr << "Errore creazione directory: "
+              << e.what() << std::endl;
+    return;
+}
+
+std::ofstream out(filename);
+
+if (!out.is_open())
+{
+    std::cerr << "Errore apertura file: " << filename << std::endl;
+    return;
+}
+    std::cout << "1 riga"<<std::endl;
 
     //-----------------------------
     // TIME
@@ -50,6 +85,7 @@ void DACCSVGenerator::generateDACCSV(const std::string& filename, unsigned int s
     out << "[GRID]\n";
     out << "rows,cols,h\n";
     out << ROWS << "," << COLS << "," << 2 << "\n\n";
+    std::cout<<ROWS<<","<<COLS<<std::endl;
 
     //-----------------------------
     // SECTORS
@@ -86,6 +122,7 @@ void DACCSVGenerator::generateDACCSV(const std::string& filename, unsigned int s
     out << "\n";
 
     out << "\n";
+    std::cout << "Generazione dati DAC completata. Salvataggio in " << filename << std::endl;
 
 out << "[CAPACITY]\n";
 out << "sector,time,capacity\n";
@@ -147,7 +184,12 @@ out << "\n";
     out << "[CONFIGURATIONS]\n";
     out << "id,sectors\n";
 
-    std::uniform_int_distribution<int> nSectorConfDist(5,12);
+    int minConfSize = std::min(5, NSECTORS);
+int maxConfSize = std::min(12, NSECTORS);
+
+std::uniform_int_distribution<int> nSectorConfDist(
+    minConfSize, maxConfSize
+);
     std::uniform_int_distribution<int> sectorIdDist(0,NSECTORS-1);
 
     std::vector<std::set<int>> configs;
@@ -180,6 +222,13 @@ out << "\n";
     
 
     out.close();
+
+    if (!out)
+    {
+        std::cerr << "Errore durante il salvataggio del file: "
+                << filename << std::endl;
+        return;
+    }
 
     std::cout << "Istanza salvata in " << filename << std::endl;
 }

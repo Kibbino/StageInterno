@@ -1,5 +1,5 @@
-#include "Master.h"
-#include "Slave.h"
+#include "include/optimization/Master.h"
+#include "include/optimization/Slave.h"
 
 #include <iostream>
 

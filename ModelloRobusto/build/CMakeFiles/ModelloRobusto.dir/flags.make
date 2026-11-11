@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/opt/gurobi1302/linux64/include
+CXX_INCLUDES = -I"/mnt/c/Dani_uni/Terzo Anno/Tirocinio/StageInterno/ModelloRobusto" -I/opt/gurobi1302/linux64/include
 
 CXX_FLAGS = -std=gnu++17
 

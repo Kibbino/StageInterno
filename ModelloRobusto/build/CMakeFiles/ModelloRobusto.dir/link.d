@@ -2,11 +2,12 @@ ModelloRobusto: \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o \
-  CMakeFiles/ModelloRobusto.dir/main.cpp.o \
-  CMakeFiles/ModelloRobusto.dir/Master.cpp.o \
-  CMakeFiles/ModelloRobusto.dir/Slave.cpp.o \
-  CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o \
-  CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o \
+  CMakeFiles/ModelloRobusto.dir/src/main.cpp.o \
+  CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o \
+  CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o \
+  CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o \
+  CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o \
+  CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o \
   /opt/gurobi1302/linux64/lib/libgurobi_c++.a \
   /opt/gurobi1302/linux64/lib/libgurobi130.so \
   /usr/lib/gcc/x86_64-linux-gnu/13/libstdc++.so \
@@ -46,15 +47,17 @@ ModelloRobusto: \
 
 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o:
 
-CMakeFiles/ModelloRobusto.dir/main.cpp.o:
+CMakeFiles/ModelloRobusto.dir/src/main.cpp.o:
 
-CMakeFiles/ModelloRobusto.dir/Master.cpp.o:
+CMakeFiles/ModelloRobusto.dir/src/optimization/Master.cpp.o:
 
-CMakeFiles/ModelloRobusto.dir/Slave.cpp.o:
+CMakeFiles/ModelloRobusto.dir/src/optimization/Slave.cpp.o:
 
-CMakeFiles/ModelloRobusto.dir/generate_dac_data.cpp.o:
+CMakeFiles/ModelloRobusto.dir/src/data/generate_dac_data.cpp.o:
 
-CMakeFiles/ModelloRobusto.dir/DACCSVGenerator.cpp.o:
+CMakeFiles/ModelloRobusto.dir/src/data/DACCSVGenerator.cpp.o:
+
+CMakeFiles/ModelloRobusto.dir/src/profiler/AlgorithmProfiler.cpp.o:
 
 /opt/gurobi1302/linux64/lib/libgurobi_c++.a:
 
